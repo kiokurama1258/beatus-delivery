@@ -268,7 +268,7 @@ img{display:block;max-width:100%}
     <div class="reveal" style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#ac002f;margin-bottom:12px">O problema</div>
     <h2 class="reveal" style="font-family:'Clash Display',Georgia,serif;font-size:clamp(32px,4.5vw,54px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;margin-bottom:14px;max-width:780px;text-wrap:balance">Você trabalha igual a um louco e ainda assim o delivery não decola.</h2>
     <p class="reveal" style="font-size:17px;color:#4a4a4a;line-height:1.6;max-width:560px;margin-bottom:48px">Se você se reconhece em pelo menos dois desses pontos, não é falta de esforço, é falta de estratégia.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:18px">
       <div class="reveal" style="border:1px solid #e2e2e2;border-radius:8px;padding:28px 26px">
         <div aria-hidden="true" style="font-family:'Clash Display',Georgia,serif;font-size:26px;color:#ac002f;font-weight:700;margin-bottom:12px">↯</div>
         <h3 style="font-family:'Clash Display',Georgia,serif;font-size:19px;font-weight:600;margin-bottom:8px;letter-spacing:-0.01em">Refém das taxas do iFood</h3>
@@ -318,7 +318,7 @@ img{display:block;max-width:100%}
     <div class="reveal" style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#ac002f;margin-bottom:12px">O que a gente faz</div>
     <h2 class="reveal" style="font-family:'Clash Display',Georgia,serif;font-size:clamp(32px,4.5vw,54px);font-weight:700;letter-spacing:-0.03em;line-height:1.05;margin-bottom:14px;max-width:760px;text-wrap:balance">Uma máquina de pedidos completa para o seu restaurante.</h2>
     <p class="reveal" style="font-size:17px;color:#4a4a4a;line-height:1.6;max-width:540px;margin-bottom:48px">Do anúncio que dá água na boca até o cliente voltar a pedir, a gente cuida de cada etapa.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:2px;background:#e2e2e2;border:1px solid #e2e2e2;border-radius:8px;overflow:hidden">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2px;background:#e2e2e2;border:1px solid #e2e2e2;border-radius:8px;overflow:hidden">
 
       <div class="svc" style="background:#fff;padding:38px 34px">
         <div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#a5a5a5;margin-bottom:18px">01</div>
@@ -667,10 +667,11 @@ img{display:block;max-width:100%}
         "enviado" e mentia para o visitante. Agora ele abre o WhatsApp da
         agência (+55 21 97534-0783) com a mensagem preenchida.
 
-        Se quiser gravar os leads num backend/CRM, defina data-endpoint no
-        <form> abaixo. Havendo endpoint, ele faz POST antes de abrir o WhatsApp.
+        Os leads também são enviados ao webhook do n8n (data-endpoint no <form>),
+        como form-urlencoded + no-cors: assim o POST chega mesmo sem CORS liberado
+        e nunca bloqueia a abertura do WhatsApp.
       -->
-      <form id="lead-form" novalidate style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:clamp(28px,4vw,40px)">
+      <form id="lead-form" data-endpoint="https://secretaria.beatusmidias.com.br/webhook/ea70cd55-43cb-4178-9cc7-b5644659e92f" novalidate style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:10px;padding:clamp(28px,4vw,40px)">
         <div style="margin-bottom:16px">
           <label for="f-nome" style="display:block;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:7px">Seu nome</label>
           <input class="field" id="f-nome" name="nome" type="text" autocomplete="name" placeholder="João da Silva" required style="width:100%;padding:13px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:4px;font-family:'Satoshi',sans-serif;font-size:15px;color:#fff;outline:none">
@@ -773,14 +774,21 @@ img{display:block;max-width:100%}
 
     var url = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(texto);
 
-    // Se houver backend configurado, grava o lead antes de abrir o WhatsApp.
+    // Envia o lead ao webhook (n8n) antes de abrir o WhatsApp.
+    // form-urlencoded + no-cors = "simple request": o POST chega ao n8n mesmo
+    // sem CORS configurado no webhook, e o .catch garante que nada bloqueia a conversão.
     var endpoint = form.dataset.endpoint;
     if (endpoint) {
-      fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome: nome, negocio: negocio, whatsapp: whats, faturamento: fat })
-      }).catch(function () { /* nunca bloqueia a conversão */ });
+      var dados = new URLSearchParams({
+        nome: nome,
+        negocio: negocio,
+        whatsapp: whats,
+        faturamento: fat,
+        origem: 'lp-delivery',
+        pagina: location.href
+      });
+      fetch(endpoint, { method: 'POST', mode: 'no-cors', keepalive: true, body: dados })
+        .catch(function () { /* nunca bloqueia a conversão */ });
     }
 
     if (window.dataLayer) {
