@@ -1,0 +1,6 @@
+# Arquivos internos — não publicar
+PUBLICAR.md
+set-url.sh
+.seo-backups/
+.DS_Store
+**/.DS_Store
