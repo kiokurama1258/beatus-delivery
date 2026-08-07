@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnóstico gratuito do seu delivery | Beatus Mídias</title>
+<meta name="description" content="Responda 5 perguntas rápidas e receba um diagnóstico gratuito do seu delivery. Venda mais sem depender do iFood, com tráfego pago e IA da Beatus Mídias.">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://delivery.beatusmidias.com.br/diagnostico/">
+<meta property="og:title" content="Diagnóstico gratuito do seu delivery | Beatus Mídias">
+<meta property="og:description" content="Responda 5 perguntas rápidas e receba um diagnóstico gratuito do seu delivery.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://delivery.beatusmidias.com.br/diagnostico/">
+
+<!-- Consent Mode v2 (LGPD): nega por padrao, libera so apos aceite -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+(function(){
+  var c = null;
+  try { c = localStorage.getItem('beatus_consent'); } catch(e) {}
+  if (c === 'granted') {
+    gtag('consent','default',{'ad_storage':'granted','ad_user_data':'granted','ad_personalization':'granted','analytics_storage':'granted'});
+  } else {
+    gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied'});
+  }
+})();
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-586Z8BLT');</script>
+<!-- End Google Tag Manager -->
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#0d0d0e}
+body{font-family:'Satoshi',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.app{max-width:468px;margin:0 auto;min-height:100dvh;background:#131316;display:flex;flex-direction:column;position:relative}
+.top{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;height:60px;flex:0 0 auto;border-bottom:1px solid rgba(255,255,255,.06)}
+.top img{height:26px;width:auto;display:block}
+.top span{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.34);font-weight:600}
+.bar{display:flex;align-items:center;gap:12px;padding:14px 22px 4px;flex:0 0 auto}
+.back{width:34px;height:34px;border:none;background:rgba(255,255,255,.08);border-radius:50%;display:none;align-items:center;justify-content:center;color:#fff;cursor:pointer;flex:0 0 auto;font-size:0}
+.back.show{display:flex}
+.back svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.track{flex:1;height:6px;background:rgba(255,255,255,.09);border-radius:6px;overflow:hidden}
+.fill{height:100%;width:0;background:#e0466a;border-radius:6px;transition:width .35s cubic-bezier(.4,0,.2,1)}
+.steps{flex:1;display:flex;flex-direction:column;min-height:0}
+.step{display:none;flex-direction:column;flex:1;padding:14px 22px 26px;overflow-y:auto}
+.step.active{display:flex;animation:stepin .3s ease}
+#app.banner-on .step{padding-bottom:188px}
+@keyframes stepin{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:none}}
+.badge{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;background:rgba(172,0,47,.18);color:#f08aa4;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:6px 11px;border-radius:20px}
+h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:700;line-height:1.12;color:#fff;margin:18px 0 0;letter-spacing:-.01em}
+.q{font-family:'Clash Display','Satoshi',sans-serif;font-size:25px;font-weight:600;line-height:1.18;color:#fff;margin:2px 0 3px;letter-spacing:-.01em}
+.sub{font-size:15px;line-height:1.5;color:rgba(255,255,255,.6);margin-top:11px}
+.hint{font-size:13px;color:rgba(255,255,255,.38);margin:3px 0 16px}
+.opts{display:flex;flex-direction:column;gap:11px;margin-top:4px}
+.opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#1e1e22;border:1.5px solid rgba(255,255,255,.12);border-radius:14px;padding:16px 15px;font-size:16px;font-weight:500;color:#ffffff;cursor:pointer;font-family:inherit;transition:transform .1s ease,border-color .15s,background .15s}
+.opt:hover{border-color:rgba(224,70,106,.6)}
+.opt:active{transform:scale(.985)}
+.opt.sel{border-color:#e0466a;background:rgba(172,0,47,.2)}
+.ring{width:23px;height:23px;border-radius:50%;border:2px solid rgba(255,255,255,.3);flex:0 0 auto;position:relative;transition:border-color .15s}
+.opt.sel .ring{border-color:#e0466a}
+.opt.sel .ring:after{content:"";position:absolute;inset:3px;border-radius:50%;background:#e0466a}
+.sp{flex:1;min-height:14px}
+.cta{width:100%;height:54px;border:none;border-radius:12px;background:#ac002f;color:#fff;font-size:16.5px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;transition:background .15s,transform .1s}
+.cta:hover{background:#c8103a}
+.cta:active{transform:scale(.99)}
+.cta svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.trust{text-align:center;font-size:12.5px;color:rgba(255,255,255,.4);margin-top:13px}
+.field{margin-top:14px}
+.lbl{display:block;font-size:13px;font-weight:600;color:rgba(255,255,255,.74);margin-bottom:7px}
+.inp{width:100%;height:50px;border:1.5px solid rgba(255,255,255,.14);border-radius:11px;padding:0 15px;font-size:16px;color:#fff;background:#1a1a1e;font-family:inherit;outline:none;transition:border-color .15s}
+.inp::placeholder{color:rgba(255,255,255,.32)}
+.inp:focus{border-color:#e0466a}
+.err{color:#ff7a85;font-size:13px;margin-top:9px;min-height:16px}
+.ok{width:74px;height:74px;border-radius:50%;background:rgba(46,204,113,.16);color:#37d67a;display:flex;align-items:center;justify-content:center;margin:10px auto 0}
+.ok svg{width:38px;height:38px;stroke:#37d67a;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.restart{display:block;margin:16px auto 0;background:none;border:none;color:rgba(255,255,255,.4);font-size:13px;cursor:pointer;text-decoration:underline;font-family:inherit}
+#cookiebar{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;max-width:444px;margin:0 auto;background:#1d1d1d;color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 18px}
+#cookiebar p{margin:0 0 12px;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.8)}
+#cookiebar a{color:#f08aa4}
+#cookiebar .row{display:flex;gap:9px}
+#cookiebar button{flex:1;border:none;font-family:inherit;font-weight:700;font-size:14px;padding:11px;border-radius:8px;cursor:pointer}
+#bc-yes{background:#ac002f;color:#fff}
+#bc-no{background:transparent;color:rgba(255,255,255,.7);border:1.5px solid rgba(255,255,255,.22)}
+@media (prefers-reduced-motion:reduce){.fill,.step.active,.opt,.cta{transition:none;animation:none}}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-586Z8BLT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div class="app" id="app">
+  <div class="top">
+    <img src="/assets/logo-branco.png" alt="Beatus Mídias">
+    <span>Agência de tráfego · IA</span>
+  </div>
+  <div class="bar">
+    <button class="back" id="back" aria-label="Voltar"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div class="track"><div class="fill" id="fill"></div></div>
+  </div>
+  <div class="steps" id="steps">
+
+    <section class="step active" data-k="intro" style="justify-content:center">
+      <span class="badge">Diagnóstico gratuito</span>
+      <h1>Seu delivery pode vender mais sem viver refém do iFood.</h1>
+      <p class="sub">Responda 5 perguntas rápidas e a Beatus Mídias monta um diagnóstico gratuito do seu delivery.</p>
+      <div style="height:26px"></div>
+      <button class="cta" data-next="q1">Começar <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <div class="trust">Leva 40 segundos. Sem custo, sem robô chato.</div>
+    </section>
+
+    <section class="step" data-k="q1">
+      <div class="q">Que tipo de delivery é o seu?</div>
+      <div class="hint">Toque na sua resposta</div>
+      <div class="opts">
+        <button class="opt" data-field="tipo" data-next="q2"><span class="ring"></span>Pizzaria</button>
+        <button class="opt" data-field="tipo" data-next="q2"><span class="ring"></span>Hamburgueria</button>
+        <button class="opt" data-field="tipo" data-next="q2"><span class="ring"></span>Comida japonesa / oriental</button>
+        <button class="opt" data-field="tipo" data-next="q2"><span class="ring"></span>Açaí, sorvete ou doces</button>
+        <button class="opt" data-field="tipo" data-next="q2"><span class="ring"></span>Outro tipo</button>
+      </div>
+    </section>
+
+    <section class="step" data-k="q2">
+      <div class="q">Qual é o seu maior objetivo agora?</div>
+      <div class="hint">Toque na sua resposta</div>
+      <div class="opts">
+        <button class="opt" data-field="objetivo" data-next="q3"><span class="ring"></span>Depender menos do iFood</button>
+        <button class="opt" data-field="objetivo" data-next="q3"><span class="ring"></span>Vender mais nos horários fracos</button>
+        <button class="opt" data-field="objetivo" data-next="q3"><span class="ring"></span>Ter clientes que voltam sempre</button>
+        <button class="opt" data-field="objetivo" data-next="q3"><span class="ring"></span>Escalar o faturamento</button>
+      </div>
+    </section>
+
+    <section class="step" data-k="q3">
+      <div class="q">Quanto seu delivery fatura por mês?</div>
+      <div class="hint">Mais ou menos, só pra dimensionar</div>
+      <div class="opts">
+        <button class="opt" data-field="faturamento" data-next="q4"><span class="ring"></span>Até R$ 20 mil</button>
+        <button class="opt" data-field="faturamento" data-next="q4"><span class="ring"></span>R$ 20 mil a R$ 50 mil</button>
+        <button class="opt" data-field="faturamento" data-next="q4"><span class="ring"></span>R$ 50 mil a R$ 100 mil</button>
+        <button class="opt" data-field="faturamento" data-next="q4"><span class="ring"></span>Acima de R$ 100 mil</button>
+      </div>
+    </section>
+
+    <section class="step" data-k="q4">
+      <div class="q">Você já investe em anúncios?</div>
+      <div class="hint">Toque na sua resposta</div>
+      <div class="opts">
+        <button class="opt" data-field="anuncios" data-next="q5"><span class="ring"></span>Não, nunca fiz</button>
+        <button class="opt" data-field="anuncios" data-next="q5"><span class="ring"></span>Já tentei e não deu certo</button>
+        <button class="opt" data-field="anuncios" data-next="q5"><span class="ring"></span>Faço eu mesmo</button>
+        <button class="opt" data-field="anuncios" data-next="q5"><span class="ring"></span>Sim, com agência</button>
+      </div>
+    </section>
+
+    <section class="step" data-k="q5">
+      <div class="q">Você já tem cardápio digital?</div>
+      <div class="hint">Toque na sua resposta</div>
+      <div class="opts">
+        <button class="opt" data-field="cardapio" data-next="q5b"><span class="ring"></span>Sim, já tenho</button>
+        <button class="opt" data-field="cardapio" data-next="contact"><span class="ring"></span>Não, ainda não</button>
+      </div>
+    </section>
+
+    <section class="step" data-k="q5b">
+      <div class="q">Qual cardápio digital você usa?</div>
+      <div class="hint">Toque na sua resposta</div>
+      <div class="opts">
+        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>iFood</button>
+        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>Goomer</button>
+        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>Anota AI</button>
+        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>Cardápio na Web</button>
+        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>Site próprio</button>
+        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>Outro</button>
+      </div>
+    </section>
+
+    <section class="step" data-k="contact">
+      <div class="q">Boa! Seu diagnóstico está pronto.</div>
+      <p class="sub">Pra onde a gente manda? Chega no seu WhatsApp em minutos.</p>
+      <div class="field"><label class="lbl" for="fNome">Seu nome</label><input class="inp" id="fNome" type="text" autocomplete="name" placeholder="Como podemos te chamar?"></div>
+      <div class="field"><label class="lbl" for="fZap">Seu WhatsApp</label><input class="inp" id="fZap" type="tel" inputmode="numeric" autocomplete="tel" placeholder="(21) 90000-0000"></div>
+      <div class="field"><label class="lbl" for="fMail">Seu e-mail</label><input class="inp" id="fMail" type="email" inputmode="email" autocomplete="email" placeholder="voce@email.com"></div>
+      <div class="field"><label class="lbl" for="fCity">Sua cidade</label><input class="inp" id="fCity" type="text" autocomplete="address-level2" placeholder="Ex: Maricá, Niterói, São Gonçalo..."></div>
+      <div class="err" id="err" role="alert"></div>
+      <button class="cta" id="send">Quero meu diagnóstico <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <div class="trust">Seus dados são usados só pra esse contato. Sem spam.</div>
+    </section>
+
+    <section class="step" data-k="success" style="text-align:center;justify-content:center">
+      <div class="ok"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="q" style="margin-top:18px">Prontinho!</div>
+      <p class="sub">Recebemos suas respostas. Um especialista da Beatus vai te chamar no WhatsApp com o diagnóstico do seu delivery.</p>
+      <div style="height:22px"></div>
+      <a class="cta" id="waGo" href="https://wa.me/5521975340783" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.9-.9L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5z"/></svg> Falar agora no WhatsApp</a>
+      <div class="trust">Se o WhatsApp não abrir sozinho, toque no botão acima.</div>
+    </section>
+
+  </div>
+</div>
+
+<!-- Banner de cookies (LGPD) -->
+<div id="cookiebar">
+  <p>Usamos cookies para entender como a página é usada e melhorar sua experiência. Você escolhe. <a href="https://beatusmidias.com.br/politica-de-privacidade/" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+  <div class="row"><button id="bc-yes">Aceitar</button><button id="bc-no">Recusar</button></div>
+</div>
+
+<script>
+(function(){
+  var app=document.getElementById('app'), steps=[].slice.call(document.querySelectorAll('.step'));
+  var fill=document.getElementById('fill'), back=document.getElementById('back');
+  var order=['intro','q1','q2','q3','q4','q5','q5b','contact','success'];
+  var prog={intro:0,q1:14,q2:28,q3:42,q4:56,q5:68,q5b:80,contact:90,success:100};
+  var hist=['intro'];
+  var answers={};
+  function cur(){return hist[hist.length-1];}
+  function stepEl(k){return steps.filter(function(s){return s.getAttribute('data-k')===k;})[0];}
+  function show(){
+    var c=cur();
+    steps.forEach(function(s){s.classList.toggle('active', s.getAttribute('data-k')===c);});
+    fill.style.width=(prog[c]||0)+'%';
+    back.classList.toggle('show', hist.length>1 && c!=='success');
+    var act=stepEl(c); if(act){act.scrollTop=0; act.querySelectorAll('.opt.sel').forEach(function(o){/*keep*/});}
+    steps.forEach(function(s){ if(s.getAttribute('data-k')!==c){ s.querySelectorAll('.opt.sel').forEach(function(o){o.classList.remove('sel');}); } });
+    window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'quiz_step', quiz_step:c, quiz_index:order.indexOf(c)});
+  }
+  function go(k){ if(order.indexOf(k)<0)return; hist.push(k); show(); }
+  app.addEventListener('click',function(e){
+    var opt=e.target.closest('.opt');
+    if(opt){
+      var f=opt.getAttribute('data-field'); if(f){answers[f]=opt.textContent.trim();}
+      opt.classList.add('sel');
+      var nx=opt.getAttribute('data-next');
+      setTimeout(function(){ if(nx)go(nx); },240);
+      return;
+    }
+    var wa=e.target.closest('a[href*="wa.me"]');
+    if(wa){ window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'click_whatsapp'}); return; }
+    var b=e.target.closest('[data-next]');
+    if(b){ go(b.getAttribute('data-next')); }
+  });
+  back.addEventListener('click',function(){ if(hist.length>1){hist.pop();show();} });
+
+  document.getElementById('send').addEventListener('click',function(){
+    var nome=document.getElementById('fNome').value.trim();
+    var zapRaw=document.getElementById('fZap').value.trim();
+    var zap=zapRaw.replace(/\D/g,'');
+    var mail=document.getElementById('fMail').value.trim();
+    var city=document.getElementById('fCity').value.trim();
+    var err=document.getElementById('err');
+    if(!nome){err.textContent='Falta só o seu nome.';document.getElementById('fNome').focus();return;}
+    if(zap.length<10){err.textContent='Confere o WhatsApp: DDD + número.';document.getElementById('fZap').focus();return;}
+    if(mail && (mail.indexOf('@')<1 || mail.lastIndexOf('.')<mail.indexOf('@'))){err.textContent='Confere o e-mail.';document.getElementById('fMail').focus();return;}
+    if(!city){err.textContent='Qual a sua cidade?';document.getElementById('fCity').focus();return;}
+    err.textContent='';
+    answers.nome=nome; answers.whatsapp=zapRaw; answers.email=mail; answers.cidade=city;
+
+    var cardapioTxt = answers.cardapio==='Sim, já tenho' ? ('Sim ('+(answers.cardapio_qual||'nao informado')+')') : (answers.cardapio||'-');
+    var msg='Olá! Fiz o diagnóstico do meu delivery no site da Beatus.\n\n'+
+      'Nome: '+nome+'\nCidade: '+city+'\nWhatsApp: '+zapRaw+(mail?('\nE-mail: '+mail):'')+
+      '\n\nTipo de delivery: '+(answers.tipo||'-')+
+      '\nObjetivo: '+(answers.objetivo||'-')+
+      '\nFaturamento/mês: '+(answers.faturamento||'-')+
+      '\nJá anuncia: '+(answers.anuncios||'-')+
+      '\nCardápio digital: '+cardapioTxt;
+    var url='https://wa.me/5521975340783?text='+encodeURIComponent(msg);
+
+    var endpoint='https://secretaria.beatusmidias.com.br/webhook/ea70cd55-43cb-4178-9cc7-b5644659e92f';
+    try{
+      fetch(endpoint,{method:'POST',mode:'no-cors',keepalive:true,body:new URLSearchParams({
+        nome:nome, whatsapp:zapRaw, email:mail, cidade:city,
+        tipo:answers.tipo||'', objetivo:answers.objetivo||'', faturamento:answers.faturamento||'',
+        anuncios:answers.anuncios||'', cardapio:answers.cardapio||'', cardapio_qual:answers.cardapio_qual||'',
+        origem:'diagnostico-delivery', pagina:location.href
+      })}).catch(function(){});
+    }catch(e){}
+
+    // Conversao: dispara Lead no pixel (via GTM) + generate_lead no GA4
+    window.dataLayer=window.dataLayer||[];
+    window.dataLayer.push({event:'generate_lead', lead_tipo:answers.tipo||'', lead_objetivo:answers.objetivo||'', lead_faturamento:answers.faturamento||'', lead_anuncios:answers.anuncios||'', lead_cardapio:answers.cardapio||'', lead_cidade:city});
+
+    document.getElementById('waGo').href=url;
+    go('success');
+    window.open(url,'_blank','noopener');
+  });
+
+  // Banner de cookies
+  (function(){
+    var box=document.getElementById('cookiebar'), salvo=null;
+    try{salvo=localStorage.getItem('beatus_consent');}catch(e){}
+    if(!salvo && box){ box.style.display='block'; app.classList.add('banner-on'); }
+    function decide(v){
+      try{localStorage.setItem('beatus_consent',v);}catch(e){}
+      if(typeof gtag==='function'){var g=(v==='granted')?'granted':'denied';gtag('consent','update',{'ad_storage':g,'ad_user_data':g,'ad_personalization':g,'analytics_storage':g});}
+      if(box) box.style.display='none';
+      app.classList.remove('banner-on');
+    }
+    var y=document.getElementById('bc-yes'), n=document.getElementById('bc-no');
+    if(y)y.addEventListener('click',function(){decide('granted');});
+    if(n)n.addEventListener('click',function(){decide('denied');});
+  })();
+
+  show();
+})();
+</script>
+</body>
+</html>
