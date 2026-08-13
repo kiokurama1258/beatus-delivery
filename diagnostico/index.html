@@ -164,7 +164,7 @@ h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:7
       <div class="hint">Toque na sua resposta</div>
       <div class="opts">
         <button class="opt" data-field="cardapio" data-next="q5b"><span class="ring"></span>Sim, já tenho</button>
-        <button class="opt" data-field="cardapio" data-next="contact"><span class="ring"></span>Não, ainda não</button>
+        <button class="opt" data-field="cardapio" data-next="insta"><span class="ring"></span>Não, ainda não</button>
       </div>
     </section>
 
@@ -172,13 +172,22 @@ h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:7
       <div class="q">Qual cardápio digital você usa?</div>
       <div class="hint">Toque na sua resposta</div>
       <div class="opts">
-        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>iFood</button>
-        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>Goomer</button>
-        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>Anota AI</button>
-        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>Cardápio na Web</button>
-        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>Site próprio</button>
-        <button class="opt" data-field="cardapio_qual" data-next="contact"><span class="ring"></span>Outro</button>
+        <button class="opt" data-field="cardapio_qual" data-next="insta"><span class="ring"></span>iFood</button>
+        <button class="opt" data-field="cardapio_qual" data-next="insta"><span class="ring"></span>Goomer</button>
+        <button class="opt" data-field="cardapio_qual" data-next="insta"><span class="ring"></span>Anota AI</button>
+        <button class="opt" data-field="cardapio_qual" data-next="insta"><span class="ring"></span>Cardápio na Web</button>
+        <button class="opt" data-field="cardapio_qual" data-next="insta"><span class="ring"></span>Site próprio</button>
+        <button class="opt" data-field="cardapio_qual" data-next="insta"><span class="ring"></span>Outro</button>
       </div>
+    </section>
+
+    <section class="step" data-k="insta">
+      <div class="q">Qual o @ do seu delivery no Instagram?</div>
+      <p class="sub">A gente d&aacute; uma olhada no seu perfil antes de montar o diagn&oacute;stico. Se n&atilde;o tiver, pode pular.</p>
+      <div class="field"><label class="lbl" for="fInsta">Seu @ no Instagram</label><input class="inp" id="fInsta" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="@seudelivery"></div>
+      <div class="err" id="errInsta" role="alert"></div>
+      <button class="cta" id="instaGo">Continuar <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      <button type="button" id="instaSkip" style="background:none;border:none;color:rgba(255,255,255,.45);font:inherit;font-size:14px;margin-top:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px">N&atilde;o tenho Instagram</button>
     </section>
 
     <section class="step" data-k="contact">
@@ -215,8 +224,8 @@ h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:7
 (function(){
   var app=document.getElementById('app'), steps=[].slice.call(document.querySelectorAll('.step'));
   var fill=document.getElementById('fill'), back=document.getElementById('back');
-  var order=['intro','q1','q2','q3','q4','q5','q5b','contact','success'];
-  var prog={intro:0,q1:14,q2:28,q3:42,q4:56,q5:68,q5b:80,contact:90,success:100};
+  var order=['intro','q1','q2','q3','q4','q5','q5b','insta','contact','success'];
+  var prog={intro:0,q1:13,q2:26,q3:39,q4:52,q5:64,q5b:74,insta:84,contact:92,success:100};
   var hist=['intro'];
   var answers={};
   function cur(){return hist[hist.length-1];}
@@ -247,6 +256,19 @@ h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:7
   });
   back.addEventListener('click',function(){ if(hist.length>1){hist.pop();show();} });
 
+  function instaNext(skip){
+    var inp=document.getElementById('fInsta'), err=document.getElementById('errInsta');
+    var v=skip?'':inp.value.trim();
+    v=v.replace(/^https?:\/\/(www\.)?instagram\.com\//i,'').replace(/[\/?].*$/,'').replace(/^@+/,'').replace(/\s+/g,'');
+    if(!skip && v && !/^[A-Za-z0-9._]{1,30}$/.test(v)){err.textContent='Confere o @ (s\u00f3 letras, n\u00fameros, ponto e underline).';inp.focus();return;}
+    err.textContent='';
+    answers.instagram=v?('@'+v):'';
+    go('contact');
+  }
+  document.getElementById('instaGo').addEventListener('click',function(){instaNext(false);});
+  document.getElementById('instaSkip').addEventListener('click',function(){instaNext(true);});
+  document.getElementById('fInsta').addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();instaNext(false);}});
+
   document.getElementById('send').addEventListener('click',function(){
     var nome=document.getElementById('fNome').value.trim();
     var zapRaw=document.getElementById('fZap').value.trim();
@@ -268,7 +290,8 @@ h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:7
       '\nObjetivo: '+(answers.objetivo||'-')+
       '\nFaturamento/mês: '+(answers.faturamento||'-')+
       '\nJá anuncia: '+(answers.anuncios||'-')+
-      '\nCardápio digital: '+cardapioTxt;
+      '\nCardápio digital: '+cardapioTxt+
+      '\nInstagram: '+(answers.instagram||'-');
     var url='https://wa.me/5521975340783?text='+encodeURIComponent(msg);
 
     var endpoint='https://secretaria.beatusmidias.com.br/webhook/ea70cd55-43cb-4178-9cc7-b5644659e92f';
@@ -277,13 +300,14 @@ h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:7
         nome:nome, whatsapp:zapRaw, email:mail, cidade:city,
         tipo:answers.tipo||'', objetivo:answers.objetivo||'', faturamento:answers.faturamento||'',
         anuncios:answers.anuncios||'', cardapio:answers.cardapio||'', cardapio_qual:answers.cardapio_qual||'',
+        instagram:answers.instagram||'',
         origem:'diagnostico-delivery', pagina:location.href
       })}).catch(function(){});
     }catch(e){}
 
     // Conversao: dispara Lead no pixel (via GTM) + generate_lead no GA4
     window.dataLayer=window.dataLayer||[];
-    window.dataLayer.push({event:'generate_lead', lead_tipo:answers.tipo||'', lead_objetivo:answers.objetivo||'', lead_faturamento:answers.faturamento||'', lead_anuncios:answers.anuncios||'', lead_cardapio:answers.cardapio||'', lead_cidade:city});
+    window.dataLayer.push({event:'generate_lead', lead_tipo:answers.tipo||'', lead_objetivo:answers.objetivo||'', lead_faturamento:answers.faturamento||'', lead_anuncios:answers.anuncios||'', lead_cardapio:answers.cardapio||'', lead_instagram:answers.instagram||'', lead_cidade:city});
 
     document.getElementById('waGo').href=url;
     go('success');
