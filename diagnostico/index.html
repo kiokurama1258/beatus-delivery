@@ -294,15 +294,39 @@ h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:7
       '\nInstagram: '+(answers.instagram||'-');
     var url='https://wa.me/5521990724147?text='+encodeURIComponent(msg);
 
+    // Captura do lead ANTES de abrir o WhatsApp. Se a pessoa desistir de enviar a
+    // mensagem, os dados ja chegaram. sendBeacon sobrevive ao app do WhatsApp
+    // roubando o foco no celular; fetch fica de reserva.
     var endpoint='https://secretaria.beatusmidias.com.br/webhook/ea70cd55-43cb-4178-9cc7-b5644659e92f';
+    var params=new URLSearchParams({
+      nome:nome, whatsapp:zapRaw, email:mail, cidade:city,
+      tipo:answers.tipo||'', objetivo:answers.objetivo||'', faturamento:answers.faturamento||'',
+      anuncios:answers.anuncios||'', cardapio:answers.cardapio||'', cardapio_qual:answers.cardapio_qual||'',
+      instagram:answers.instagram||'',
+      origem:'diagnostico-delivery', pagina:location.href
+    });
+    var beaconOk=false;
     try{
-      fetch(endpoint,{method:'POST',mode:'no-cors',keepalive:true,body:new URLSearchParams({
-        nome:nome, whatsapp:zapRaw, email:mail, cidade:city,
-        tipo:answers.tipo||'', objetivo:answers.objetivo||'', faturamento:answers.faturamento||'',
-        anuncios:answers.anuncios||'', cardapio:answers.cardapio||'', cardapio_qual:answers.cardapio_qual||'',
-        instagram:answers.instagram||'',
-        origem:'diagnostico-delivery', pagina:location.href
-      })}).catch(function(){});
+      if(navigator.sendBeacon){
+        beaconOk=navigator.sendBeacon(endpoint,new Blob([params.toString()],{type:'application/x-www-form-urlencoded'}));
+      }
+    }catch(e){}
+    if(!beaconOk){
+      try{ fetch(endpoint,{method:'POST',mode:'no-cors',keepalive:true,body:params}).catch(function(){}); }catch(e){}
+    }
+
+    // Captura na IA da Beatus (app.beatusmidias.com.br). O script so captura sozinho
+    // em <form> de verdade, e este quiz nao tem um, entao chamamos na mao.
+    try{
+      var org={}; try{ org=JSON.parse(sessionStorage.getItem('beatus_origem')||'{}'); }catch(e){}
+      var dadosIA={ nome:nome, telefone:zapRaw, email:mail,
+        pagina:location.href, referrer:(org._ref||document.referrer||''),
+        formulario:'Diagnostico do delivery',
+        campos:{ 'Cidade':city, 'Tipo de delivery':answers.tipo||'', 'Objetivo':answers.objetivo||'',
+          'Faturamento/mes':answers.faturamento||'', 'Ja anuncia':answers.anuncios||'',
+          'Cardapio digital':cardapioTxt, 'Instagram':answers.instagram||'' } };
+      for(var k in org){ if(k!=='_ref') dadosIA[k]=org[k]; }
+      if(typeof window.beatusEnviarLead==='function'){ window.beatusEnviarLead(dadosIA); }
     }catch(e){}
 
     // Conversao: dispara Lead no pixel (via GTM) + generate_lead no GA4
@@ -333,5 +357,6 @@ h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:7
   show();
 })();
 </script>
+<script src="https://app.beatusmidias.com.br/api/captura/bts_YqmhDrX9ydzjKQHzRlhjO3t8/beatus.js" async></script>
 </body>
 </html>
