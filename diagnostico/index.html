@@ -39,14 +39,14 @@ body{font-family:'Satoshi',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 .app{max-width:468px;margin:0 auto;min-height:100dvh;background:#131316;display:flex;flex-direction:column;position:relative}
 .top{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;height:60px;flex:0 0 auto;border-bottom:1px solid rgba(255,255,255,.06)}
 .top img{height:26px;width:auto;display:block}
-.top span{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.34);font-weight:600}
+.top span{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,0.56);font-weight:600}
 .bar{display:flex;align-items:center;gap:12px;padding:14px 22px 4px;flex:0 0 auto}
 .back{width:34px;height:34px;border:none;background:rgba(255,255,255,.08);border-radius:50%;display:none;align-items:center;justify-content:center;color:#fff;cursor:pointer;flex:0 0 auto;font-size:0}
 .back.show{display:flex}
 .back svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .track{flex:1;height:6px;background:rgba(255,255,255,.09);border-radius:6px;overflow:hidden}
 .fill{height:100%;width:0;background:#e0466a;border-radius:6px;transition:width .35s cubic-bezier(.4,0,.2,1)}
-.steps{flex:1;display:flex;flex-direction:column;min-height:0}
+.steps{overflow-x:clip;flex:1;display:flex;flex-direction:column;min-height:0}
 .step{display:none;flex-direction:column;flex:1;padding:14px 22px 26px;overflow-y:auto}
 .step.active{display:flex;animation:stepin .3s ease}
 #app.banner-on .step{padding-bottom:188px}
@@ -55,7 +55,7 @@ body{font-family:'Satoshi',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:700;line-height:1.12;color:#fff;margin:18px 0 0;letter-spacing:-.01em}
 .q{font-family:'Clash Display','Satoshi',sans-serif;font-size:25px;font-weight:600;line-height:1.18;color:#fff;margin:2px 0 3px;letter-spacing:-.01em}
 .sub{font-size:15px;line-height:1.5;color:rgba(255,255,255,.6);margin-top:11px}
-.hint{font-size:13px;color:rgba(255,255,255,.38);margin:3px 0 16px}
+.hint{font-size:13px;color:rgba(255,255,255,0.56);margin:3px 0 16px}
 .opts{display:flex;flex-direction:column;gap:11px;margin-top:4px}
 .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:#1e1e22;border:1.5px solid rgba(255,255,255,.12);border-radius:14px;padding:16px 15px;font-size:16px;font-weight:500;color:#ffffff;cursor:pointer;font-family:inherit;transition:transform .1s ease,border-color .15s,background .15s}
 .opt:hover{border-color:rgba(224,70,106,.6)}
@@ -69,16 +69,16 @@ h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:7
 .cta:hover{background:#c8103a}
 .cta:active{transform:scale(.99)}
 .cta svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.trust{text-align:center;font-size:12.5px;color:rgba(255,255,255,.4);margin-top:13px}
+.trust{text-align:center;font-size:12.5px;color:rgba(255,255,255,0.56);margin-top:13px}
 .field{margin-top:14px}
 .lbl{display:block;font-size:13px;font-weight:600;color:rgba(255,255,255,.74);margin-bottom:7px}
 .inp{width:100%;height:50px;border:1.5px solid rgba(255,255,255,.14);border-radius:11px;padding:0 15px;font-size:16px;color:#fff;background:#1a1a1e;font-family:inherit;outline:none;transition:border-color .15s}
-.inp::placeholder{color:rgba(255,255,255,.32)}
+.inp::placeholder{color:rgba(255,255,255,0.56)}
 .inp:focus{border-color:#e0466a}
 .err{color:#ff7a85;font-size:13px;margin-top:9px;min-height:16px}
 .ok{width:74px;height:74px;border-radius:50%;background:rgba(46,204,113,.16);color:#37d67a;display:flex;align-items:center;justify-content:center;margin:10px auto 0}
 .ok svg{width:38px;height:38px;stroke:#37d67a;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-.restart{display:block;margin:16px auto 0;background:none;border:none;color:rgba(255,255,255,.4);font-size:13px;cursor:pointer;text-decoration:underline;font-family:inherit}
+.restart{display:block;margin:16px auto 0;background:none;border:none;color:rgba(255,255,255,0.56);font-size:13px;cursor:pointer;text-decoration:underline;font-family:inherit}
 #cookiebar{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;max-width:444px;margin:0 auto;background:#1d1d1d;color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:16px 18px}
 #cookiebar p{margin:0 0 12px;font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.8)}
 #cookiebar a{color:#f08aa4}
@@ -87,6 +87,17 @@ h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:7
 #bc-yes{background:#ac002f;color:#fff}
 #bc-no{background:transparent;color:rgba(255,255,255,.7);border:1.5px solid rgba(255,255,255,.22)}
 @media (prefers-reduced-motion:reduce){.fill,.step.active,.opt,.cta{transition:none;animation:none}}
+
+/* beatus-focus */
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #f0a0b0;outline-offset:3px;border-radius:3px}
+::selection{background:#ac002f;color:#fff}
+
+/* beatus-mobile: nav cabe em 360px e o CTA nao corta */
+@media (max-width:640px){
+  .nav-link{display:none}
+  nav a img{height:44px !important}
+  nav .btn-primary{padding:10px 15px;font-size:13px}
+}
 </style>
 </head>
 <body>
@@ -187,7 +198,7 @@ h1{font-family:'Clash Display','Satoshi',sans-serif;font-size:29px;font-weight:7
       <div class="field"><label class="lbl" for="fInsta">Seu @ no Instagram</label><input class="inp" id="fInsta" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="@seudelivery"></div>
       <div class="err" id="errInsta" role="alert"></div>
       <button class="cta" id="instaGo">Continuar <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-      <button type="button" id="instaSkip" style="background:none;border:none;color:rgba(255,255,255,.45);font:inherit;font-size:14px;margin-top:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px">N&atilde;o tenho Instagram</button>
+      <button type="button" id="instaSkip" style="background:none;border:none;color:rgba(255,255,255,0.56);font:inherit;font-size:14px;margin-top:14px;cursor:pointer;text-decoration:underline;text-underline-offset:3px">N&atilde;o tenho Instagram</button>
     </section>
 
     <section class="step" data-k="contact">
