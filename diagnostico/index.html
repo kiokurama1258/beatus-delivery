@@ -45,7 +45,7 @@ body{font-family:'Satoshi',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sa
 .back.show{display:flex}
 .back svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .track{flex:1;height:6px;background:rgba(255,255,255,.09);border-radius:6px;overflow:hidden}
-.fill{height:100%;width:0;background:#e0466a;border-radius:6px;transition:width .35s cubic-bezier(.4,0,.2,1)}
+.fill{height:100%;width:100%;transform:scaleX(0);transform-origin:left center;background:linear-gradient(90deg,#8f0026 0%,#ac002f 55%,#e0466a 100%);border-radius:6px;transition:transform .42s cubic-bezier(0.16,1,0.3,1)}
 .steps{overflow-x:clip;flex:1;display:flex;flex-direction:column;min-height:0}
 .step{display:none;flex-direction:column;flex:1;padding:14px 22px 26px;overflow-y:auto}
 .step.active{display:flex;animation:stepin .3s ease}
@@ -123,6 +123,16 @@ h1 em{animation:bts-resolver .9s .15s cubic-bezier(0.16,1,0.3,1) both}
   h1 em{animation:bts-surgir .45s ease both !important;filter:none !important}
   .faq summary::after,details > summary::after{transition-duration:.12s !important}
   details::details-content{transition:none !important}
+}
+
+/* beatus-delight: a escolha registra antes da tela virar */
+@keyframes bts-marca{from{transform:scale(0)}to{transform:scale(1)}}
+.opt{transition:border-color .16s ease,background .16s ease,transform .1s ease}
+.opt .ring{transition:border-color .16s ease}
+.opt.sel .ring:after{animation:bts-marca .17s cubic-bezier(0.16,1,0.3,1) both}
+@media (prefers-reduced-motion:reduce){
+  .fill{transition-duration:.15s !important}
+  .opt.sel .ring:after{animation:none !important}
 }
 </style>
 </head>
@@ -270,7 +280,7 @@ h1 em{animation:bts-resolver .9s .15s cubic-bezier(0.16,1,0.3,1) both}
   function show(){
     var c=cur();
     steps.forEach(function(s){s.classList.toggle('active', s.getAttribute('data-k')===c);});
-    fill.style.width=(prog[c]||0)+'%';
+    fill.style.transform='scaleX('+((prog[c]||0)/100)+')';
     back.classList.toggle('show', hist.length>1 && c!=='success');
     var act=stepEl(c); if(act){act.scrollTop=0; act.querySelectorAll('.opt.sel').forEach(function(o){/*keep*/});}
     steps.forEach(function(s){ if(s.getAttribute('data-k')!==c){ s.querySelectorAll('.opt.sel').forEach(function(o){o.classList.remove('sel');}); } });
@@ -281,6 +291,8 @@ h1 em{animation:bts-resolver .9s .15s cubic-bezier(0.16,1,0.3,1) both}
     var opt=e.target.closest('.opt');
     if(opt){
       var f=opt.getAttribute('data-field'); if(f){answers[f]=opt.textContent.trim();}
+      var grp=opt.parentNode;
+      if(grp){ grp.querySelectorAll('.opt.sel').forEach(function(o){ o.classList.remove('sel'); }); }
       opt.classList.add('sel');
       var nx=opt.getAttribute('data-next');
       setTimeout(function(){ if(nx)go(nx); },240);
