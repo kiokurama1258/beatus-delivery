@@ -125,9 +125,8 @@ img{display:block;max-width:100%}
 .wa-float:hover{box-shadow:0 8px 28px rgba(37,211,102,.55)}
 .inline-link{color:#ac002f;text-decoration:underline;text-underline-offset:2px}
 #perguntas details > summary::-webkit-details-marker{display:none}
-#perguntas details > summary{position:relative;padding-right:36px;list-style:none}
-#perguntas details > summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:26px;line-height:1;color:#ac002f;font-weight:400}
-#perguntas details[open] > summary::after{content:"\2013"}
+#perguntas details > summary{position:relative;padding-right:36px;list-style:none}#perguntas details > summary::before{content:"";position:absolute;top:50%;right:2px;width:15px;height:2px;margin-top:-1px;background:#ac002f;border-radius:1px;transform:none}
+#perguntas details > summary::after{content:"";position:absolute;top:50%;right:8.5px;width:2px;height:15px;margin-top:-7.5px;background:#ac002f;border-radius:1px;transform:none;transition:transform .32s cubic-bezier(0.16,1,0.3,1)}#perguntas details[open] > summary::after{content:"";transform:rotate(90deg)}
 
 /* beatus-focus */
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #f0a0b0;outline-offset:3px;border-radius:3px}
@@ -138,6 +137,32 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
   .nav-link{display:none}
   nav a img{height:44px !important}
   nav .btn-primary{padding:10px 15px;font-size:13px}
+}
+
+/* beatus-motion */
+@keyframes bts-resolver{from{opacity:0;filter:blur(16px)}to{opacity:1;filter:blur(0)}}
+@keyframes bts-surgir{from{opacity:0}to{opacity:1}}
+/* momento focal: a promessa em vinho sai do escuro e entra em foco. Roda uma vez. */
+h1 em{animation:bts-resolver .9s .15s cubic-bezier(0.16,1,0.3,1) both}
+/* entradas de secao mais curtas, para nao competir com o momento focal */
+.reveal{transform:translateY(14px);transition:opacity .5s cubic-bezier(0.16,1,0.3,1),transform .5s cubic-bezier(0.16,1,0.3,1)}
+/* resposta ao toque no caminho de conversao */
+.btn-primary,.btn-secondary,.wa-float{transition:background .18s ease,color .18s ease,border-color .18s ease,transform .13s cubic-bezier(0.16,1,0.3,1),box-shadow .18s ease}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(172,0,47,0.34)}
+.btn-primary:active,.btn-secondary:active,.wa-float:active{transform:translateY(0) scale(0.985);transition-duration:.08s}
+.btn-primary:active{box-shadow:0 2px 7px rgba(172,0,47,0.3)}
+.wa-float:active{box-shadow:0 3px 12px rgba(37,211,102,0.45)}
+.opt:active,.servico-item:active{transform:scale(0.99);transition-duration:.08s}
+/* FAQ: o + vira - com movimento, e o painel deixa de dar salto */
+@supports (interpolate-size:allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  details::details-content{block-size:0;overflow:hidden;transition:block-size .34s cubic-bezier(0.16,1,0.3,1),content-visibility .34s allow-discrete;transition-behavior:allow-discrete}
+  details[open]::details-content{block-size:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  h1 em{animation:bts-surgir .45s ease both !important;filter:none !important}
+  .faq summary::after,details > summary::after{transition-duration:.12s !important}
+  details::details-content{transition:none !important}
 }
 </style>
 <!-- Consent Mode v2 (LGPD): nega por padrao, libera so apos aceite -->
@@ -219,19 +244,19 @@ function gtag(){dataLayer.push(arguments);}
     <h2 style="font-family:'Clash Display',Georgia,serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:32px">Perguntas de quem tem pizzaria.</h2>
     <div style="border-top:1px solid #e2e2e2">
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como fazer minha pizzaria vender mais no delivery?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como fazer minha pizzaria vender mais no delivery?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">Com tráfego pago levando o pedido para o seu WhatsApp em vez do iFood, criativo de pizza com o queijo puxando e combos que sobem o ticket. A gente concentra a verba nos picos de sexta a domingo, alcança a família que vai pedir pizza e usa IA no WhatsApp para não perder pedido na correria da noite.</p>
       </details>
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Qual o melhor dia e horário para anunciar uma pizzaria?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Qual o melhor dia e horário para anunciar uma pizzaria?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">Pizza é fim de semana e noite. O grosso do pedido acontece de sexta a domingo, a partir do fim da tarde. Concentramos a verba nesses horários de maior intenção e usamos os dias de semana para ofertas de recompra, como a promoção de terça, que enchem a cozinha em dia parado.</p>
       </details>
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como aumentar o ticket médio da pizzaria no delivery?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como aumentar o ticket médio da pizzaria no delivery?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">Pizza já é um pedido de valor mais alto, feito para dividir, e isso é uma vantagem. Com combos de borda recheada, refrigerante e sobremesa oferecidos na hora certa, e a segunda pizza com desconto, a IA no WhatsApp sobe o valor do pedido sem espantar o cliente, mantendo a sua margem.</p>
       </details>
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Qual a melhor estratégia de marketing para pizzaria delivery?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Qual a melhor estratégia de marketing para pizzaria delivery?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">A que concentra a verba onde está a demanda: de sexta a domingo, no raio que você realmente entrega, com criativo que mostra a pizza e combo que sobe o ticket. Depois disso, o que mais rende é levar o pedido para o seu próprio canal e trabalhar recompra, porque quem já pediu custa bem menos que cliente novo.</p>
       </details>
     </div>

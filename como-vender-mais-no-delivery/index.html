@@ -186,9 +186,8 @@ img{display:block;max-width:100%}
 .chip:hover{border-color:#ac002f;color:#ac002f;transform:translateY(-2px)}
 .chip .arw{color:#ac002f;font-weight:700}
 #perguntas details > summary::-webkit-details-marker{display:none}
-#perguntas details > summary{position:relative;padding-right:36px;list-style:none}
-#perguntas details > summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:26px;line-height:1;color:#ac002f;font-weight:400}
-#perguntas details[open] > summary::after{content:"\2212"}
+#perguntas details > summary{position:relative;padding-right:36px;list-style:none}#perguntas details > summary::before{content:"";position:absolute;top:50%;right:2px;width:15px;height:2px;margin-top:-1px;background:#ac002f;border-radius:1px;transform:none}
+#perguntas details > summary::after{content:"";position:absolute;top:50%;right:8.5px;width:2px;height:15px;margin-top:-7.5px;background:#ac002f;border-radius:1px;transform:none;transition:transform .32s cubic-bezier(0.16,1,0.3,1)}#perguntas details[open] > summary::after{content:"";transform:rotate(90deg)}
 
 /* beatus-focus */
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #f0a0b0;outline-offset:3px;border-radius:3px}
@@ -199,6 +198,32 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
   .nav-link{display:none}
   nav a img{height:44px !important}
   nav .btn-primary{padding:10px 15px;font-size:13px}
+}
+
+/* beatus-motion */
+@keyframes bts-resolver{from{opacity:0;filter:blur(16px)}to{opacity:1;filter:blur(0)}}
+@keyframes bts-surgir{from{opacity:0}to{opacity:1}}
+/* momento focal: a promessa em vinho sai do escuro e entra em foco. Roda uma vez. */
+h1 em{animation:bts-resolver .9s .15s cubic-bezier(0.16,1,0.3,1) both}
+/* entradas de secao mais curtas, para nao competir com o momento focal */
+.reveal{transform:translateY(14px);transition:opacity .5s cubic-bezier(0.16,1,0.3,1),transform .5s cubic-bezier(0.16,1,0.3,1)}
+/* resposta ao toque no caminho de conversao */
+.btn-primary,.btn-secondary,.wa-float{transition:background .18s ease,color .18s ease,border-color .18s ease,transform .13s cubic-bezier(0.16,1,0.3,1),box-shadow .18s ease}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(172,0,47,0.34)}
+.btn-primary:active,.btn-secondary:active,.wa-float:active{transform:translateY(0) scale(0.985);transition-duration:.08s}
+.btn-primary:active{box-shadow:0 2px 7px rgba(172,0,47,0.3)}
+.wa-float:active{box-shadow:0 3px 12px rgba(37,211,102,0.45)}
+.opt:active,.servico-item:active{transform:scale(0.99);transition-duration:.08s}
+/* FAQ: o + vira - com movimento, e o painel deixa de dar salto */
+@supports (interpolate-size:allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  details::details-content{block-size:0;overflow:hidden;transition:block-size .34s cubic-bezier(0.16,1,0.3,1),content-visibility .34s allow-discrete;transition-behavior:allow-discrete}
+  details[open]::details-content{block-size:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  h1 em{animation:bts-surgir .45s ease both !important;filter:none !important}
+  .faq summary::after,details > summary::after{transition-duration:.12s !important}
+  details::details-content{transition:none !important}
 }
 </style>
 <!-- Consent Mode v2 (LGPD): nega por padrao, libera so apos aceite -->
@@ -389,27 +414,27 @@ function gtag(){dataLayer.push(arguments);}
     <h2 style="font-family:'Clash Display',Georgia,serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:32px">Perguntas frequentes</h2>
     <div style="border-top:1px solid #e2e2e2">
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como divulgar o meu delivery?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como divulgar o meu delivery?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">A forma mais eficiente é o tráfego pago no Instagram, Facebook e Google levando o cliente direto para o WhatsApp do seu restaurante, concentrado nos horários de pico (almoço e jantar). Assim o pedido cai no seu canal, sem comissão de aplicativo, e você fica com o contato do cliente para vender de novo depois.</p>
       </details>
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Quanto investir em tráfego pago para delivery?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Quanto investir em tráfego pago para delivery?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">Não existe um valor único: o certo é começar com uma verba que caiba no seu caixa (muitos deliveries começam com algo entre R$ 20 e R$ 50 por dia) e acompanhar o custo por pedido. Se cada pedido entra mais barato do que a comissão que você pagaria no aplicativo, vale a pena escalar. O número que importa é quanto custa cada pedido, não o valor total investido.</p>
       </details>
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Vale a pena sair do iFood?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Vale a pena sair do iFood?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">Não precisa sair, precisa parar de depender. O iFood traz um fluxo de quem já está no app, então use com um teto de investimento. Em paralelo, construa o seu canal próprio de pedidos no WhatsApp, onde não há comissão sobre o pedido e o cliente é seu. O equilíbrio é aproveitar o app sem virar refém dele.</p>
       </details>
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como atrair mais clientes para o restaurante pelo WhatsApp?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como atrair mais clientes para o restaurante pelo WhatsApp?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">Com anúncios do tipo Click-to-WhatsApp, que levam a pessoa direto para a conversa, e com um atendimento que responde na hora, tira dúvidas do cardápio e fecha o pedido. Recuperar quem montou o pedido e não finalizou e reativar clientes antigos são duas alavancas que trazem muito pedido sem gastar de novo em anúncio.</p>
       </details>
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Uma IA no WhatsApp funciona para restaurante?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Uma IA no WhatsApp funciona para restaurante?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">Sim. Uma IA de atendimento responde na hora, tira dúvidas do cardápio, registra o pedido, recupera carrinho abandonado e atende dezenas de conversas ao mesmo tempo no horário de pico, quando um atendente humano não dá conta. É o que evita que o cliente com fome vá pedir no concorrente por falta de resposta.</p>
       </details>
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Quanto tempo leva para o marketing dar resultado no delivery?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Quanto tempo leva para o marketing dar resultado no delivery?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">O tráfego pago costuma trazer os primeiros pedidos já nos primeiros dias, porque atinge quem está com fome agora. O que leva algumas semanas é a construção do canal próprio e da base de clientes para recompra, que é onde o resultado vira consistente e menos dependente de anúncio. É um ganho rápido no começo e crescente com o tempo.</p>
       </details>
     </div>

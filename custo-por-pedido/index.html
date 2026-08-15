@@ -142,9 +142,8 @@ img{display:block;max-width:100%}
 .box.wa{border-left-color:#25d366}
 .box p{font-size:16px;color:#1d1d1d;line-height:1.6;margin:0}
 #perguntas details > summary::-webkit-details-marker{display:none}
-#perguntas details > summary{position:relative;padding-right:36px;list-style:none}
-#perguntas details > summary::after{content:"+";position:absolute;right:2px;top:50%;transform:translateY(-50%);font-size:26px;line-height:1;color:#ac002f;font-weight:400}
-#perguntas details[open] > summary::after{content:"\2212"}
+#perguntas details > summary{position:relative;padding-right:36px;list-style:none}#perguntas details > summary::before{content:"";position:absolute;top:50%;right:2px;width:15px;height:2px;margin-top:-1px;background:#ac002f;border-radius:1px;transform:none}
+#perguntas details > summary::after{content:"";position:absolute;top:50%;right:8.5px;width:2px;height:15px;margin-top:-7.5px;background:#ac002f;border-radius:1px;transform:none;transition:transform .32s cubic-bezier(0.16,1,0.3,1)}#perguntas details[open] > summary::after{content:"";transform:rotate(90deg)}
 
 /* beatus-focus */
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid #f0a0b0;outline-offset:3px;border-radius:3px}
@@ -155,6 +154,32 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
   .nav-link{display:none}
   nav a img{height:44px !important}
   nav .btn-primary{padding:10px 15px;font-size:13px}
+}
+
+/* beatus-motion */
+@keyframes bts-resolver{from{opacity:0;filter:blur(16px)}to{opacity:1;filter:blur(0)}}
+@keyframes bts-surgir{from{opacity:0}to{opacity:1}}
+/* momento focal: a promessa em vinho sai do escuro e entra em foco. Roda uma vez. */
+h1 em{animation:bts-resolver .9s .15s cubic-bezier(0.16,1,0.3,1) both}
+/* entradas de secao mais curtas, para nao competir com o momento focal */
+.reveal{transform:translateY(14px);transition:opacity .5s cubic-bezier(0.16,1,0.3,1),transform .5s cubic-bezier(0.16,1,0.3,1)}
+/* resposta ao toque no caminho de conversao */
+.btn-primary,.btn-secondary,.wa-float{transition:background .18s ease,color .18s ease,border-color .18s ease,transform .13s cubic-bezier(0.16,1,0.3,1),box-shadow .18s ease}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(172,0,47,0.34)}
+.btn-primary:active,.btn-secondary:active,.wa-float:active{transform:translateY(0) scale(0.985);transition-duration:.08s}
+.btn-primary:active{box-shadow:0 2px 7px rgba(172,0,47,0.3)}
+.wa-float:active{box-shadow:0 3px 12px rgba(37,211,102,0.45)}
+.opt:active,.servico-item:active{transform:scale(0.99);transition-duration:.08s}
+/* FAQ: o + vira - com movimento, e o painel deixa de dar salto */
+@supports (interpolate-size:allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  details::details-content{block-size:0;overflow:hidden;transition:block-size .34s cubic-bezier(0.16,1,0.3,1),content-visibility .34s allow-discrete;transition-behavior:allow-discrete}
+  details[open]::details-content{block-size:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  h1 em{animation:bts-surgir .45s ease both !important;filter:none !important}
+  .faq summary::after,details > summary::after{transition-duration:.12s !important}
+  details::details-content{transition:none !important}
 }
 </style>
 <!-- Consent Mode v2 (LGPD): nega por padrao, libera so apos aceite -->
@@ -238,19 +263,19 @@ function gtag(){dataLayer.push(arguments);}
     <h2 style="font-family:'Clash Display',Georgia,serif;font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-0.03em;line-height:1.1;margin-bottom:32px">Perguntas frequentes</h2>
     <div style="border-top:1px solid #e2e2e2">
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">O que é custo por pedido no delivery?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">O que é custo por pedido no delivery?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">É quanto você gasta, na média, para cada pedido entrar. Some tudo o que investiu para gerar pedido (anúncio, comissão do aplicativo e taxas) e divida pelo número de pedidos do período. O resultado, em reais, mostra o custo real de cada pedido e permite comparar canais.</p>
       </details>
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como calcular o custo por pedido?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como calcular o custo por pedido?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">Divida o total gasto para gerar pedido pelo número de pedidos. Por exemplo: R$ 1.000 de anúncio que trouxeram 200 pedidos dão R$ 5 por pedido. No aplicativo, lembre de somar a comissão sobre o valor de cada pedido, que costuma ser o custo que mais pesa e o menos percebido.</p>
       </details>
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Qual é um bom custo por pedido?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Qual é um bom custo por pedido?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">Depende do seu ticket médio e da sua margem: R$ 5 por pedido é ótimo para um ticket de R$ 60 e caro para um de R$ 20. O jeito certo de avaliar não é olhar o número solto, e sim comparar o custo por pedido com a margem que cada pedido deixa e com o custo dos outros canais.</p>
       </details>
       <details style="border-bottom:1px solid #e2e2e2">
-        <summary style="cursor:pointer;padding:22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como saber se o anúncio do delivery está dando retorno?</summary>
+        <summary style="cursor:pointer;padding:22px 40px 22px 0;font-family:'Clash Display',Georgia,serif;font-size:clamp(17px,2vw,20px);font-weight:600;color:#1d1d1d">Como saber se o anúncio do delivery está dando retorno?</summary>
         <p style="padding:0 0 24px;font-size:15.5px;line-height:1.65;color:#4a4a4a">Coloque três números lado a lado: quanto investiu, quantos pedidos entraram e quanto faturou. Isso mostra o custo por pedido e o retorno sobre o investimento. Se cada real investido volta em mais de um real de venda com margem, o anúncio está valendo. Um painel deixa isso claro sem planilha.</p>
       </details>
     </div>
