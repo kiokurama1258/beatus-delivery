@@ -37,6 +37,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://delivery.beatusmidias.com.br/itaim-bibi/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://delivery.beatusmidias.com.br/vila-leopoldina/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://delivery.beatusmidias.com.br/marica/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
