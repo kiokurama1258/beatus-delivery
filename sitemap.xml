@@ -115,6 +115,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://delivery.beatusmidias.com.br/teresopolis/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://delivery.beatusmidias.com.br/itaborai/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://delivery.beatusmidias.com.br/belford-roxo/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://delivery.beatusmidias.com.br/araruama/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://delivery.beatusmidias.com.br/marica/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
