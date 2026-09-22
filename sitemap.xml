@@ -139,6 +139,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://delivery.beatusmidias.com.br/sao-pedro-da-aldeia/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://delivery.beatusmidias.com.br/arraial-do-cabo/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://delivery.beatusmidias.com.br/saquarema/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://delivery.beatusmidias.com.br/iguaba-grande/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://delivery.beatusmidias.com.br/marica/</loc>
     <lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
