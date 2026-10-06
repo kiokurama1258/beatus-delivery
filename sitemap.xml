@@ -354,4 +354,13 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url><loc>https://delivery.beatusmidias.com.br/pizzaria-marica/</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://delivery.beatusmidias.com.br/pizzaria-niteroi/</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://delivery.beatusmidias.com.br/pizzaria-rio-de-janeiro/</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://delivery.beatusmidias.com.br/hamburgueria-marica/</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://delivery.beatusmidias.com.br/hamburgueria-niteroi/</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://delivery.beatusmidias.com.br/hamburgueria-rio-de-janeiro/</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://delivery.beatusmidias.com.br/restaurante-japones-marica/</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://delivery.beatusmidias.com.br/restaurante-japones-niteroi/</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://delivery.beatusmidias.com.br/restaurante-japones-rio-de-janeiro/</loc><lastmod>2026-10-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
